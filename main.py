@@ -43,13 +43,19 @@ def morse_sound(word):
             winsound.Beep(1000, 600)
 
 
-choice = input("Do you want to change to encrypt or decrypt morse code? type Encrypt or Decrypt: ").upper()
-if choice == "ENCRYPT":
-    phrase = input("What word or phrase do you want to convert to morse code? ").upper()
-    morse = to_morse(phrase)
-    print(morse)
-    morse_sound(morse)
-elif choice == "DECRYPT":
-    morse_input = input("What is the code to decipher? ").upper()
-    morse_split = morse_input.split()
-    print(to_word(morse_split))
+encrypting = True
+while encrypting:
+    choice = input("Do you want to change to encrypt or decrypt morse code? type Encrypt or Decrypt: ").upper()
+    if choice == "EXIT":
+        encrypting = False
+    elif choice == "ENCRYPT":
+        phrase = input("What word or phrase do you want to convert to morse code? ").upper()
+        morse = to_morse(phrase)
+        print(morse)
+        morse_sound(morse)
+    elif choice == "DECRYPT":
+        morse_input = input("What is the code to decipher? ").upper()
+        morse_split = morse_input.split()
+        print(to_word(morse_split))
+    else:
+        print("Not a choice. Choose Encrypt/Decrypt or type Exit")
